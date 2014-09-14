@@ -1,0 +1,3 @@
+Plain Egg|1.45
+Bacon and Egg|2.45
+Muffin|.99

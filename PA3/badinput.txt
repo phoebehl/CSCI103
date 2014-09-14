@@ -1,0 +1,10 @@
+-- building room_number capacity
+OHE 100 120
+
+-- ID pre course# sect# #minutes #meetingsperweek #students
+20001 CSCI 101 01 110 2 40
+20002 CSCI 101 02 110 2 60
+
+-- ID days_constraint start_contraint end_constraint
+20001 MW 1000 1200
+20002 MW 1000 1200

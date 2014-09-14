@@ -1,0 +1,44 @@
+Notes PA3
+dynamically allocate rooms array, figure out how many lines are in first part of input txt. variable called room count
+that is implemented in file
+
+Room* rooms;
+
+	figure out # of rooms
+	
+
+rooms = new Room[linesIndex];
+for(int i=0; i < linesIndex; i++)
+{
+	stringstream ss;
+	ss << lines[i];
+	ss >> rooms[i].building_code
+	>> rooms[i].room_number
+	>> rooms[i].max_students;
+}
+//Fill array
+
+How to know a line is blank? 
+int linesIndex=0;
+string line;
+string lines[100]; -->can reuse this 
+ifile.getline(line);
+
+if(fail state)
+
+if line.size() == 1, it's a blank line
+
+line.size() --> tells you how many char in string variable, does not iinclude newline chaacter
+
+For -- comments:
+
+if(line.find("--")) != 0 -->returns where the characters start, if statement says "if not a comment...do xyz"
+//Keep this line, store it somewhere, etc
+lines[linesIndex]=line;
+linesIndex++;
+
+How does Crowley's code work?
+
+The function you call is bool schedule sections.
+it returns true or false.
+If true, the rooms were scheduled. If false, the rooms were unable to be scheduled. 

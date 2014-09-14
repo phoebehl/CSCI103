@@ -1,0 +1,167 @@
+#include <iostream>
+#include <cmath>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+//Variables to make players' decks
+int decks;
+int allValues[260];
+int allSuits[260];
+int p1Values[260];
+int p1Suits[260];
+int p2Values[260];
+int p2Suits[260];
+
+//Variables tracking gameplay
+int p1current;
+int p2current;
+int p1currentSuit;
+int p2currentSuit;
+int p1total;
+int p2total;
+int cardsPlayed;
+const int cardsPerDeck = 52;
+
+//Variables tracking statistics
+float handsPlayed;
+float warHands;
+float p1wins;
+float p2wins;
+float p1warWins;
+float p2warWins;
+char watchAns;
+
+//Function prototypes
+void makeDeck(int decks); 
+void shuffle();
+void deal();
+void draw();
+void tie();
+int stats();
+
+int main(){
+  cout << "Enter a number of decks between 1 and 5 to be played with: " << endl;
+  cin >> decks;
+
+  cout << "Would you like to watch the game? Enter Y for yes or N for no: " << endl;
+  cin >> watchAns;
+  cout << endl << endl;
+
+  cardsPlayed = 0; //Tracks how many cards have been played (in case of a war)
+
+while ( p1total != (decks*cardsPerDeck) && p2total != (decks*cardsPerDeck) ){ //Run until either player has all the cards
+          //Makes arrays to store cards currently in play
+          int inPlayVal[260];
+          int inPlaySuit[260];
+	  
+	  //Assigns player's cards to variables
+	  p1current = p1Values[0];
+	  p1currentSuit = p1Suits[0];
+	  p2current = p2Values[0];
+	  p2currentSuit = p2Suits[0];
+
+	  //Store cards to array of cards in play
+	  inPlayVal[cardsPlayed] = p1current;
+	  inPlaySuit[cardsPlayed] = p1currentSuit;
+	  inPlayVal[cardsPlayed+1] = p2current;
+	  inPlaySuit[cardsPlayed+1] = p2currentSuit;
+	  cardsPlayed = cardsPlayed + 2;
+
+	  if ( watchAns == 'Y' ){//Executes only if user wants to watch the game. Displays the card of each player.
+	      cout << "Hand #: " << handsPlayed << endl << endl;
+	      cout << "Player 1 now has " << p1total << " cards." << endl;
+	      cout << "Player 2 now has " << p2total << " cards." << endl << endl;
+
+          //Moves all elements in player arrays one to the left
+              for ( int i = 1; i < (decks*cardsPerDeck); i++){
+                  p1Values[i-1] = p1Values[i];
+                  p1Suits[i-1] = p1Suits[i];
+                  p2Values[i-1] = p2Values[i];
+                  p2Suits[i-1] = p2Suits[i];
+              }
+
+	      p1total --;
+	      p2total --;
+cout 
+
+}//End of main
+
+void makeDeck(int decks){
+
+ //Inserts 0-12 in value array and 0-3 representing suits in suit array
+ for (int i = 0; i < (cardsPerDeck*decks); i){
+    for (int j = 0; j < 13; j++){
+      allValues[i] = j;
+      i++;
+    }
+ }
+ for (int i = 0; i < (cardsPerDeck*decks); i){
+   for (int k = 0; k < 4; k++){
+     for (int j = 0; j < 13; j++){
+       allSuits[i] = k;
+      i++;
+ 
+    }
+   }
+ }
+
+}//end of makeDeck
+
+
+
+void shuffle(){
+  
+  int x;
+  int tempVal;
+  int tempSuit;
+  
+ 
+  for ( int i = 0; i < 6; i++){
+    for ( int j = 0; j < (cardsPerDeck*decks); j++ ){
+      x = (rand() % (cardsPerDeck*decks));
+      tempVal = allValues[j];
+      tempSuit = allSuits[j];
+      allValues[j] = allValues[x];
+      allSuits[j] = allSuits[x];
+      allValues[x] = tempVal;
+      allSuits[x] = tempSuit;
+    }
+  }  
+
+}//end of shuffle
+
+
+
+void deal(){
+
+  for (int i = 0; i < ((decks*cardsPerDeck)/2); i++){ //places odd indexes in player 2's deck, places even indexes in player 1's deck. Only fills half the size of player arrays.
+    p1Values[i] = allValues[2*i];
+    p1Suits[i] = allSuits[2*i];
+    p2Values[i] = allValues[(2*i)+1];
+    p2Suits[i] = allSuits[(2*i)+1];
+  }
+ 
+  //Establishes starting amount of cards each player has
+  p1total = (decks*cardsPerDeck)/2;
+  p2total = (decks*cardsPerDeck)/2;
+ 
+}//End of deal
+
+void
+
+int stats(){
+  cout.precision(4);
+  cout << "Statistics" << endl << endl;
+  cout << "Number of hands: " << warHands+handsPlayed << endl;
+  cout << "Number of hands won by Player 1: " << (p1wins+p1warWins) << " (" << (p1wins+p1warWins)/(warHands+handsPlayed)*100 << "%)" << endl;
+  cout << "Number of hands won by Player 2: " << (p2wins+p2warWins) << " (" << (p2wins+p2warWins)/(warHands+handsPlayed)*100 << "%)" << endl;
+  cout << "Number of war: " << warHands << endl;
+  cout << "Number of wars won by Player 1: " << p1warWins << " (" << (p1warWins/warHands)*100 << "%)" << endl;
+  cout << "Number of wars won by Player 2: " << p2warWins << " (" << (p2warWins/warHands)*100 << "%)" << endl;
+
+  return 0;
+
+}//End of stats
+
+

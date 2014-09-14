@@ -1,0 +1,16 @@
+Getline Pseudocode
+
+after opening file, determine how many total rooms there are:
+read a line
+while it is not a blank line,
+	if it's not a comment,
+		increase number of lines by 1
+		store the line in an array 
+
+	else
+	read another line
+will stop running at a blank line
+
+then create dynamic array based on the number of lines
+
+

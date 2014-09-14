@@ -1,0 +1,14 @@
+if(p1[0] > p2[0]){
+
+for( int i = 1; i < p1cards; i++ ) {
+p1[i-1] = p1 [i];
+} //moves array as you play 
+p1cards--
+
+int p1card = p1[0];
+int p2card = p2[0];
+//use to compare cards
+if p1 wins,
+p1[picards] = p1cars;
+p1cards++;
+p1[p1cards]=p2card;

@@ -1,0 +1,113 @@
+inplay bracket - keeps track of who is in play, corresponds to a boolean with same index
+
+readfile()
+team names to be read into allteams and all probs
+
+shuffle()
+shuffles names and probabilities of allteams
+then copies into bracket 1 names
+copies probs into bracket 1 probs
+these 2 will be used to play round 1
+allteams will correspond to the boolean inplay
+
+PROBLEM: after first round, how do you switch the booleans for inplay based on indexes from bracket 2?
+
+bracket ()
+using bracket 1,2,3
+pointers to those bracket positions
+
+play function - can specify which team to pass in? change every time? 
+currentHome, currentAway --> non specific to a bracket, pointers whose address should be changed after each time you call play() in main
+
+do this 4 times (4 quarters)
+output which quarter this is, increase quarter count
+draw random int
+compare to TD:
+	if less than, they score
+	increase score
+	else,
+	draw random int
+	if less than, they score
+	increase score
+	else,
+	no score
+
+draw random int:
+compare to TD other team
+	if less than,
+	they score
+	increase score
+	else,
+	draw random int
+	if less than, they score,
+	increase score
+	else,
+	no score
+
+comparing scores: 
+if team 1 wins,
+	cout team 1 wins, boolean team 2 true
+if team 2 wins, 
+	cout team 2 wins, boolean team 1 true
+else same score
+while same score,
+	draw random int
+	compare to TD:
+		if less than, they score
+		increase score
+		else,
+		draw random int
+		if less than, they score
+		increase score
+		else,
+		no score
+
+	draw random int:
+	compare to TD other team
+		if less than,
+		they score
+		increase score
+		else,
+		draw random int
+		if less than, they score,
+		increase score
+		else,
+		no score
+
+	recompare scores:
+	if team 1 wins,
+	cout team 1 wins, boolean team 2 true
+	quit while loop
+	if team 2 wins, 
+	cout team 2 wins, boolean team 1 true
+	quit while loop
+
+STATS (touchdown):
+display team names
+touchdowns per team per round (attempted and successful)
+total touchdowns per team
+total touchdowns/touchdowns attempted (decimal of previous column)
+team's corresponding probBracket1[0][i]
+probBracket1[0][i]-decimal
+
+STATS(fieldgoal):
+same thing but using FG counters
+
+breaks
+546
+564
+534
+673
+682
+700
+
+
+
+
+
+
+
+
+
+
+
